@@ -32,6 +32,7 @@ var p=true;
 var szm=1;
 
 function createGrid(size) {
+    turn=="X";
     for (let gi=0; gi<size; gi++) {
         for (let gj=0; gj<size; gj++) {
             let cell = document.createElement('div');
@@ -46,7 +47,7 @@ function createGrid(size) {
 }
 
 function gameT(c){
-    if(p==true || szm!=size*size){
+    if(p==true){
         if(turn=="X" && c.innerHTML==""){
             c.innerHTML=turn;
             turn="O";
@@ -57,12 +58,16 @@ function gameT(c){
             turn="X";
             O.push(c.id)
         }
-        checkP(X, ch);
-        checkP(O, ch);
+        checkP(X, ch, "X");
+        checkP(O, ch, "O");
+    }
+    else if(szm==size*size && p==true){
+        alert("Döntetlen")
+        p=false
     }
 }
 
-function checkP(a,s){
+function checkP(a,s,t){
     let row=new Array();
     let column=new Array();
     let bishop=new Array();
@@ -88,19 +93,25 @@ function checkP(a,s){
                             if(s==5){
                                 let r5=row[j+4];
                                 if(r1==r5){
-                                    alert("nyert")
+                                    alert(t+" nyert")
                                     p=false
+                                    X.clear()
+                                    O.clear()
                                 }
                             }
                             else{
-                                alert("nyert")
+                                aalert(t+" nyert")
                                 p=false
+                                X.clear()
+                                O.clear()
                             }
                         }
                     }
                     else{
-                        alert("nyert")
+                        alert(t+" nyert")
                         p=false
+                        X.clear()
+                        O.clear()
                     }   
                 }
             }
@@ -117,19 +128,25 @@ function checkP(a,s){
                             if(s==5){
                                 let c5=column[j+4];
                                 if(c1==c5){
-                                    alert("nyert")
+                                    alert(t+" nyert")
                                     p=false
+                                    X.clear()
+                                    O.clear()
                                 }
                             }
                             else{
-                                alert("nyert")
+                                alert(t+" nyert")
                                 p=false
+                                X.clear()
+                                O.clear()
                             }
                         }
                     }
                     else{
-                        alert("nyert")
+                        alert(t+" nyert")
                         p=false
+                        X.clear()
+                        O.clear()
                     }   
                 }
             }
@@ -146,9 +163,11 @@ function checkP(a,s){
                 }
             }
 
-            if(b1==s ||b2==s){
-                alert("nyert")
+            if(b1==s||b2==s){
+                alert(t+" nyert")
                 p=false
+                X.clear()
+                O.clear()
             }
         }
     }
