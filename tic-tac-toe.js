@@ -41,6 +41,18 @@ function createGrid(size) {
             let cell = document.createElement('div');
             cell.className='grid'
             cell.id = gi+'-'+gj;
+            if(size==3){
+                cell.style.fontSize=54+"px";
+                cell.style.padding=43+"px";
+            }
+            else if(size==4){
+                cell.style.fontSize=45+"px";
+                cell.style.padding=30+"px";
+            }
+            else if(size==5){
+                cell.style.fontSize=36+"px";
+                cell.style.padding=22+"px";
+            }
             cell.addEventListener('click',()=>{
                 gameT(cell)
             });
@@ -56,17 +68,18 @@ function gameT(c){
             c.innerHTML=turn;
             turn="O";
             X.push(c.id)
+            szm++;
         }
         else if (turn=="O" && c.innerHTML==""){
             c.innerHTML=turn;
             turn="X";
             O.push(c.id)
+            szm++;
         }
         checkP(X, ch, "X");
         checkP(O, ch, "O");
-        szm++;
     }
-    else if(szm==h && p==true){
+    if(szm==h && p==true){
         alert("Döntetlen")
         p=false
     }
@@ -103,7 +116,7 @@ function checkP(a,s,t){
                                 }
                             }
                             else{
-                                aalert(t+" nyert")
+                                alert(t+" nyert")
                                 p=false
                             }
                         }

@@ -19,6 +19,7 @@ div.grid {
     display:grid;
     border: solid 2px blue;
     text-align: center;
+    font-family: 'Courier New', Courier, monospace;
 }
 div.grid:hover {
     transition: 0.5s;
