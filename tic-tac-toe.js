@@ -168,7 +168,7 @@ function checkP(a,s,t){
                     b2++;
                 }
             }
-
+            b2++;
             if(b1==s||b2==s){
                 alert(t+" nyert")
                 p=false
