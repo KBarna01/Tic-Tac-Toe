@@ -91,7 +91,7 @@ function checkP(a,s,t){
     let bishop=new Array();
     if(a.length>2){
         for (let gi=0; gi<a.length; gi++) {
-            let ossz=a[gi].charAt(0)+a[gi].charAt(2)==s-1;
+            let ossz=parseInt(a[gi].charAt(0))+parseInt(a[gi].charAt(2))==s-1;
             if(a[gi].charAt(0)==a[gi].charAt(2) || ossz ){
                 bishop.push(a[gi]);
             }
@@ -165,7 +165,7 @@ function checkP(a,s,t){
                 if(bishop[j].charAt(0)==bishop[j].charAt(2)){
                     b1++;
                 }
-                else if(bishop[j].charAt(0)+bishop[j].charAt(2)==s-1){
+                else if(ossz){
                     b2++;
                 }
             }
